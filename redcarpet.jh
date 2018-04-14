@@ -1,134 +1,62 @@
-entity Merchant {
-	name String,
-	type MerchatType,
-	range ClassType
-    
+entity Region {
+	regionName String
 }
 
-entity Order {
-	guestNo Integer,
-	cermonyType CermonyType,
-	location String,
-	description String,
-	budget String
-	
+entity Country {
+	countryName String
 }
 
-entity MarketObject {
-	price Integer,
-	marketType MarketType,
-	discount Integer
-}
 // an ignored comment
 /** not an ignored comment */
-entity Ads {
-		startDate ZonedDateTime,
-		endDate ZonedDateTime
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
 }
 
-entity Error {
-		moment ZonedDateTime,
-		log String
+entity Department {
+	departmentName String required
 }
-
 
 /**
  * Task entity.
  * @author The JHipster team.
  */
-entity Service {
+entity Task {
 	title String,
-	description String,
-	price Long
+	description String
 }
 
 /**
  * The Employee entity.
  */
-entity Setting {
-	
-	variable String,
-    value String
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	hireDate Instant,
+	salary Long,
+	commissionPct Long
 }
 
-entity Factor {
-	
- 	name String,
- 	description String,
- 	cost Long,
- 	eventTime ZonedDateTime,
- 	done Boolean,
- 	uid String
- 
+entity Job {
+	jobTitle String,
+	minSalary Long,
+	maxSalary Long
 }
 
-entity Rating {
-	value Integer
+entity JobHistory {
+	startDate Instant,
+	endDate Instant,
+	language Language
 }
 
-entity Comment {
-	message String
+enum Language {
+    FRENCH, ENGLISH, SPANISH
 }
 
-entity Media {
-	path String,
-    contentType String
-}
-
-entity Chat {
-	message String,
-    chatTime ZonedDateTime
-}
-entity Cermony {
-	cermonyType CermonyType
-}
-entity CheckList {
-	item String
-}
-entity DoList {
-	checked Boolean
-}
-
-enum ClassType {
-    LOW, MID, HIGH, LUXURY
-}
-enum MerchatType {
-    MUSIC
-}
-enum MarketType {
-    SUBSCRIPTION, ADS
-}
-enum CermonyType {
-    WEDDING, BIRTHDAY, ENGAGE
-}
-
-relationship ManyToMany {
-	Rating{merchant(id)} to Merchant{rating},
-    Comment{merchant(id)} to Merchant{comment}
-}
-
-// defining multiple OneToMany relationships with comments
-relationship OneToMany {
-	Cermony{checkList} to CheckList,
-	Merchant{ads} to Ads,
-    Merchant{service} to Service,
-    Merchant{media} to Media
-}
-
-relationship ManyToOne{
- DoList{checkList} to CheckList,
- Factor{marketObject} to MarketObject
-}
-relationship OneToOne{
-Merchant{logo} to Media
-}
-// Set pagination options
-
-paginate Chat with pagination
-
-dto * with mapstruct
-
-// Set service options to all except few
-service all with serviceImpl
-// Set an angular suffix
-angularSuffix * with mySuffix
