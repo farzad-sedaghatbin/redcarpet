@@ -1,0 +1,42 @@
+
+<div *ngIf="orders">
+    <h2><span>Orders</span> {{orders.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Guest No</span></dt>
+        <dd>
+            <span>{{orders.guestNo}}</span>
+        </dd>
+        <dt><span>Cermony Type</span></dt>
+        <dd>
+            <span>{{orders.cermonyType}}</span>
+        </dd>
+        <dt><span>Location</span></dt>
+        <dd>
+            <span>{{orders.location}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{orders.description}}</span>
+        </dd>
+        <dt><span>Budget</span></dt>
+        <dd>
+            <span>{{orders.budget}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'orders-my-suffix/'+ orders.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

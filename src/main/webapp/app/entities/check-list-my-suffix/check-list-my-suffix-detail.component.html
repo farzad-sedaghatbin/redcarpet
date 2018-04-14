@@ -1,0 +1,32 @@
+
+<div *ngIf="checkList">
+    <h2><span>Check List</span> {{checkList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Item</span></dt>
+        <dd>
+            <span>{{checkList.item}}</span>
+        </dd>
+        <dt><span>Cermony</span></dt>
+        <dd>
+            <div *ngIf="checkList.cermonyId">
+                <a [routerLink]="['/cermony-my-suffix', checkList.cermonyId]">{{checkList.cermonyId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'check-list-my-suffix/'+ checkList.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

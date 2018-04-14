@@ -1,0 +1,52 @@
+
+<div *ngIf="factor">
+    <h2><span>Factor</span> {{factor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{factor.name}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{factor.description}}</span>
+        </dd>
+        <dt><span>Cost</span></dt>
+        <dd>
+            <span>{{factor.cost}}</span>
+        </dd>
+        <dt><span>Event Time</span></dt>
+        <dd>
+            <span>{{factor.eventTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Done</span></dt>
+        <dd>
+            <span>{{factor.done}}</span>
+        </dd>
+        <dt><span>Uid</span></dt>
+        <dd>
+            <span>{{factor.uid}}</span>
+        </dd>
+        <dt><span>Market Object</span></dt>
+        <dd>
+            <div *ngIf="factor.marketObjectId">
+                <a [routerLink]="['/market-object-my-suffix', factor.marketObjectId]">{{factor.marketObjectId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'factor-my-suffix/'+ factor.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

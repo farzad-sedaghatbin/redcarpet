@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity DoList.
+    -->
+    <changeSet id="20180414103255-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="check_list_id"
+                                 baseTableName="do_list"
+                                 constraintName="fk_do_list_check_list_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="check_list"/>
+
+    </changeSet>
+</databaseChangeLog>

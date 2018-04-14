@@ -2,16 +2,16 @@ entity Merchant {
 	name String,
 	type MerchatType,
 	range ClassType
-    
+
 }
 
-entity Order {
+entity Orders {
 	guestNo Integer,
 	cermonyType CermonyType,
 	location String,
 	description String,
 	budget String
-	
+
 }
 
 entity MarketObject {
@@ -46,20 +46,20 @@ entity Service {
  * The Employee entity.
  */
 entity Setting {
-	
+
 	variable String,
     value String
 }
 
 entity Factor {
-	
+
  	name String,
  	description String,
  	cost Long,
  	eventTime ZonedDateTime,
  	done Boolean,
  	uid String
- 
+
 }
 
 entity Rating {
