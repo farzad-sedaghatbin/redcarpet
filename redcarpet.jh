@@ -102,27 +102,6 @@ enum CermonyType {
     WEDDING, BIRTHDAY, ENGAGE
 }
 
-relationship ManyToMany {
-	Rating{merchant(id)} to Merchant{rating},
-    Comment{merchant(id)} to Merchant{comment}
-}
-
-// defining multiple OneToMany relationships with comments
-relationship OneToMany {
-	Cermony{checkList} to CheckList,
-	Merchant{ads} to Ads,
-    Merchant{service} to Service,
-    Merchant{media} to Media
-}
-
-relationship ManyToOne{
- DoList{checkList} to CheckList,
- Factor{marketObject} to MarketObject
-}
-relationship OneToOne{
-Merchant{logo} to Media
-}
-// Set pagination options
 
 paginate Chat with pagination
 
